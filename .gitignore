@@ -18,12 +18,15 @@ env/
 htmlcov/
 
 # --- Model + audio artifacts (large / generated) --------------------------
-models/
-checkpoints/
-runs/
-outputs/
-data/**
-!data/.gitkeep
+# NOTE: leading slash anchors these to the repo root so they DON'T match the
+# source package src/timbre_transfer/models/ (a plain "models/" matches at any
+# depth and silently drops that subpackage from the repo).
+/models/
+/checkpoints/
+/runs/
+/outputs/
+/data/**
+!/data/.gitkeep
 *.ts
 *.ckpt
 *.pt
