@@ -48,3 +48,6 @@ hf_cache/
 Thumbs.db
 .idea/
 .vscode/
+
+# --- Claude Code local settings (personal, incl. auto-commit hook) --------
+.claude/settings.local.json
