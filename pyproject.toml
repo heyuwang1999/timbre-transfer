@@ -31,8 +31,9 @@ timbre-infer = "timbre_transfer.cli:infer_main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
-[tool.setuptools.package-data]
-timbre_transfer = ["../configs/*.yaml"]
+# Note: configs/default.yaml lives at the repo root for easy editing. When the
+# package is installed non-editable it is not shipped, so the code falls back to
+# timbre_transfer.config.EMBEDDED_DEFAULTS (kept in sync with that YAML).
 
 # --- Tooling configuration ------------------------------------------------
 [tool.ruff]
