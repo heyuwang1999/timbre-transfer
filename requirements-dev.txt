@@ -1,0 +1,5 @@
+# Development dependencies (lint + test). Installed in CI.
+-r requirements.txt
+pytest>=8.0
+ruff>=0.4
+black>=24.0

@@ -1,0 +1,42 @@
+# Default configuration for the timbre-transfer project.
+# Override at runtime by passing --config or editing this file.
+
+models:
+  # Hugging Face repositories that host pre-trained RAVE TorchScript (.ts) models.
+  # The registry discovers .ts files dynamically via the HF API; the curated
+  # entries below are a fallback so the UI/dropdown still populates offline.
+  repos:
+    - "Intelligent-Instruments-Lab/rave-models"
+
+  # Curated fallback list. Filenames may drift over time on the Hub -- the
+  # registry prefers live discovery and only falls back to these names.
+  fallback:
+    - repo: "Intelligent-Instruments-Lab/rave-models"
+      filename: "guitar_iil_b2048_r48000_z16.ts"
+      label: "guitar"
+    - repo: "Intelligent-Instruments-Lab/rave-models"
+      filename: "organ_archive_b2048_r48000_z16.ts"
+      label: "organ"
+    - repo: "Intelligent-Instruments-Lab/rave-models"
+      filename: "birds_dawnchorus_b2048_r48000_z8.ts"
+      label: "birds"
+    - repo: "Intelligent-Instruments-Lab/rave-models"
+      filename: "voice_jvs_b2048_r44100_z16.ts"
+      label: "voice"
+
+# Local directory where downloaded checkpoints are cached (gitignored).
+cache_dir: "models"
+
+audio:
+  # Fallback sample rate used only when a model does not expose its own.
+  default_sample_rate: 48000
+  # Inference chunking for long inputs (seconds). 0 disables chunking.
+  chunk_seconds: 0
+  chunk_overlap_seconds: 0.0
+
+inference:
+  device: "auto"        # "auto" | "cpu" | "cuda"
+  # Latent manipulation defaults (RAVE encode -> decode creative controls).
+  latent_bias: 0.0
+  latent_scale: 1.0
+  latent_temperature: 0.0   # gaussian noise std added to the latent (0 = off)

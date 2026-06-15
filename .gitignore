@@ -1,0 +1,50 @@
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.python-version
+
+# --- Tooling caches -------------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# --- Model + audio artifacts (large / generated) --------------------------
+models/
+checkpoints/
+runs/
+outputs/
+data/**
+!data/.gitkeep
+*.ts
+*.ckpt
+*.pt
+*.pth
+*.onnx
+*.wav
+*.mp3
+*.flac
+*.ogg
+*.aif
+*.aiff
+
+# --- Notebooks ------------------------------------------------------------
+.ipynb_checkpoints/
+
+# --- HuggingFace / Colab --------------------------------------------------
+.cache/
+hf_cache/
+
+# --- OS / editors ---------------------------------------------------------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

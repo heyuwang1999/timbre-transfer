@@ -1,0 +1,15 @@
+# Runtime dependencies for timbre-transfer (RAVE-primary inference + Gradio UI)
+# Torch/torchaudio: install the build matching your CUDA setup. The pins below
+# are conservative lower bounds known to load RAVE TorchScript v2 exports.
+torch>=2.0
+torchaudio>=2.0
+huggingface_hub>=0.23
+gradio>=4.0
+numpy>=1.24
+soundfile>=0.12
+PyYAML>=6.0
+
+# --- Optional (DDSP / feature extraction) -------------------------------
+# Uncomment to enable the experimental DDSP feature module (pitch + loudness).
+# torchcrepe>=0.0.22
+# librosa>=0.10

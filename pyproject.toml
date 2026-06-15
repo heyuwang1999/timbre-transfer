@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "timbre-transfer"
+version = "0.1.0"
+description = "Audio timbre transfer with pre-trained RAVE models (DDSP optional)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Timbre Transfer" }]
+dependencies = [
+    "torch>=2.0",
+    "torchaudio>=2.0",
+    "huggingface_hub>=0.23",
+    "gradio>=4.0",
+    "numpy>=1.24",
+    "soundfile>=0.12",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+ddsp = ["torchcrepe>=0.0.22", "librosa>=0.10"]
+dev = ["pytest>=8.0", "ruff>=0.4", "black>=24.0"]
+
+[project.scripts]
+timbre-download = "timbre_transfer.cli:download_main"
+timbre-infer = "timbre_transfer.cli:infer_main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+timbre_transfer = ["../configs/*.yaml"]
+
+# --- Tooling configuration ------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "scripts", "app", "tests"]
+extend-exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["B008"]  # gradio/argparse patterns use calls in defaults
+
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
